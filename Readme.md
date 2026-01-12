@@ -9,6 +9,7 @@ and Unix-style CLI design.</p>
 ### Clone the repository:
 
 ```
+https://github.com/Misterparadise/mini-utils.git
 ```
 ### Run cat
 
