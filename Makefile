@@ -1,42 +1,60 @@
 # =========================================
-# Makefile для mini-utils (cat)
+# mini-utils Makefile (Linux)
 # =========================================
 
-# Комппілятор і прапори
-CC = gcc
-CFLAGS = -Wall -Wextra -Iinclude -std=c11
+ 
+CC      := gcc
+CFLAGS  := -Wall -Wextra -Werror -std=c11 -Iinclude
 
-# Директорії
-SRC_DIR = src
-BIN_DIR = bin
+# Directories
+SRC_DIR := src
+BIN_DIR := bin
 
-# Файли
-SRCS = $(SRC_DIR)/main.c $(SRC_DIR)/cat.c
-TARGET = $(BIN_DIR)/cat
-LINK = ./cat
+# Utilities
+UTILS := cat wc
 
-# =========================
-# Основна ціль
-# =========================
-all: $(BIN_DIR) $(TARGET) $(LINK)
 
-# Створення папки bin, якщо немає
+# Default target
+
+all: $(BIN_DIR) $(UTILS)
+
+# ---------
+# cat
+# ---------
+cat: \
+	$(SRC_DIR)/cat_main.c \
+	$(SRC_DIR)/cat/cat.c \
+	$(SRC_DIR)/common/io.c
+	$(CC) $(CFLAGS) $^ -o $(BIN_DIR)/cat
+
+# ------------------
+# wc
+# ------------------
+wc: \
+	$(SRC_DIR)/wc_main.c \
+	$(SRC_DIR)/wc/wc.c \
+	$(SRC_DIR)/common/io.c
+	$(CC) $(CFLAGS) $^ -o $(BIN_DIR)/wc
+
+# ----------------------
+# Create bin directory
+# ----------------------
 $(BIN_DIR):
 	mkdir -p $(BIN_DIR)
 
-# Компіляція cat
-$(TARGET): $(SRCS)
-	$(CC) $(CFLAGS) $(SRCS) -o $(TARGET)
-
-# Створення символічного посилання для зручного запуску ./cat
-$(LINK): $(TARGET)
-	ln -sf $(TARGET) $(LINK)
-
-# Очищення
+# -------------------
+# Clean
+# ------------------
 clean:
-	rm -rf $(BIN_DIR) $(LINK)
+	rm -rf $(BIN_DIR)
 
-# Швидкий запуск з аргументами
-# Використовує змінну ARGS, щоб передавати файли/аргументи
-run: all
-	$(LINK) $(ARGS)
+# -------------------
+# Convenience targets
+# -------------------
+run-cat: cat
+	./$(BIN_DIR)/cat $(ARGS)
+
+run-wc: wc
+	./$(BIN_DIR)/wc $(ARGS)
+
+.PHONY: all clean cat wc run-cat run-wc
