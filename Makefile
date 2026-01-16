@@ -1,38 +1,60 @@
 # =========================================
-# Makefile для mini-utils 
+# mini-utils Makefile (Linux)
 # =========================================
 
+ 
+CC      := gcc
+CFLAGS  := -Wall -Wextra -Werror -std=c11 -Iinclude
 
-CC = gcc
-CFLAGS = -Wall -Wextra -Iinclude -std=c11
+# Directories
+SRC_DIR := src
+BIN_DIR := bin
 
-
-SRC_DIR = src
-BIN_DIR = bin
-
-
-SRCS = $(SRC_DIR)/main.c $(SRC_DIR)/cat.c
-TARGET = $(BIN_DIR)/cat
-LINK = ./cat
+# Utilities
+UTILS := cat wc
 
 
-all: $(BIN_DIR) $(TARGET) $(LINK)
+# Default target
 
+all: $(BIN_DIR) $(UTILS)
 
+# ---------
+# cat
+# ---------
+cat: \
+	$(SRC_DIR)/cat_main.c \
+	$(SRC_DIR)/cat/cat.c \
+	$(SRC_DIR)/common/io.c
+	$(CC) $(CFLAGS) $^ -o $(BIN_DIR)/cat
+
+# ------------------
+# wc
+# ------------------
+wc: \
+	$(SRC_DIR)/wc_main.c \
+	$(SRC_DIR)/wc/wc.c \
+	$(SRC_DIR)/common/io.c
+	$(CC) $(CFLAGS) $^ -o $(BIN_DIR)/wc
+
+# ----------------------
+# Create bin directory
+# ----------------------
 $(BIN_DIR):
 	mkdir -p $(BIN_DIR)
 
-$(TARGET): $(SRCS)
-	$(CC) $(CFLAGS) $(SRCS) -o $(TARGET)
-
-
-$(LINK): $(TARGET)
-	ln -sf $(TARGET) $(LINK)
-
-
+# -------------------
+# Clean
+# ------------------
 clean:
-	rm -rf $(BIN_DIR) $(LINK)
+	rm -rf $(BIN_DIR)
 
+# -------------------
+# Convenience targets
+# -------------------
+run-cat: cat
+	./$(BIN_DIR)/cat $(ARGS)
 
-run: all
-	$(LINK) $(ARGS)
+run-wc: wc
+	./$(BIN_DIR)/wc $(ARGS)
+
+.PHONY: all clean cat wc run-cat run-wc
