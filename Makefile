@@ -11,7 +11,7 @@ SRC_DIR := src
 BIN_DIR := bin
 
 # Utilities
-UTILS := cat wc
+UTILS := cat wc grep
 
 
 # Default target
@@ -36,6 +36,11 @@ wc: \
 	$(SRC_DIR)/common/io.c
 	$(CC) $(CFLAGS) $^ -o $(BIN_DIR)/wc
 
+grep: \
+	$(SRC_DIR)/grep_main.c \
+	$(SRC_DIR)/grep/grep.c \
+	$(SRC_DIR)/common/io.c
+	$(CC) $(CFLAGS) $^ -o $(BIN_DIR)/grep
 # ----------------------
 # Create bin directory
 # ----------------------

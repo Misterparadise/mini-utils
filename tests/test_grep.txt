@@ -1,0 +1,33 @@
+The quick brown fox jumps over the lazy dog.
+Linux is a powerful operating system.
+grep is used for searching text patterns.
+LINUX can be written in uppercase too.
+The file contains multiple lines for testing.
+Pattern matching is essential in text processing.
+Error: Something went wrong on line 42.
+Warning: This is a warning message.
+SUCCESS: Operation completed successfully.
+192.168.1.1 is an IP address.
+Email: user@example.com
+Another email: admin@localhost.org
+Phone: 555-123-4567
+Date: 2024-01-15
+The word "test" appears multiple times in this test file for testing purposes.
+apple
+banana
+cherry
+Apple with capital A
+APPLE in all caps
+This line has numbers: 12345
+This line has special characters: !@#$%^&*()
+/var/log/system.log is a file path.
+https://www.example.com is a URL.
+TODO: Add more test cases later.
+FIXME: This needs to be fixed.
+Empty line below:
+
+Line with trailing spaces:    
+	Line with a tab character at the start.
+Case sensitive matching is important.
+case insensitive matching is also useful.
+Multiple    spaces    between    words.

@@ -39,10 +39,11 @@ bin/wc tests/file.txt
 <h2>Examples</h2>
 
 #### wc util
-![alt text](image.png)
+![alt text](image-3.png)
 
 ![alt text](image-2.png)
 
 #### cat util
 
-![alt text](image-1.png)
+
+![alt text](image.png)
