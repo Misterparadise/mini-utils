@@ -62,4 +62,7 @@ run-cat: cat
 run-wc: wc
 	./$(BIN_DIR)/wc $(ARGS)
 
+run-grep: grep
+	./$(BIN_DIR)/grep $(ARGS)
+	
 .PHONY: all clean cat wc run-cat run-wc
