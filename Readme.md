@@ -73,7 +73,7 @@ If no options are provided, grep prints matching lines only.
 #### cat util
 
 
-![alt text](mini_utils/images/image.png)
+![alt text](images/image-1.png)
 
 
 #### grep util
