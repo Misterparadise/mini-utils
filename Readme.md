@@ -66,14 +66,14 @@ If no options are provided, grep prints matching lines only.
 <h2>Examples</h2>
 
 #### wc util
-![alt text](/mini_utils/images/image-3.png)
+![alt text](mini_utils/images/image-3.png)
 
-![alt text](/mini_utils/images/image-2.png)
+![alt text](mini_utils/images/image-2.png)
 
 #### cat util
 
 
-![alt text](/mini_utils/images/image.png)
+![alt text](mini_utils/images/image.png)
 
 
 #### grep util
